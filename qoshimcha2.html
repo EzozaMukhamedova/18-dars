@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rain Animation</title>
+    <link rel="stylesheet" href="./qoshimcha2.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="cloud"></div>
+      <div class="ground"></div>
+    </div>
+    <script>
+      function rain() {
+        const cloud = document.querySelector(".cloud");
+        const ground = document.querySelector(".ground");
+        const drop = document.createElement("div");
+        const puddle = document.createElement("div");
+
+        const left = Math.random() * 310;
+        const width = Math.random() * 2 + 0.5;
+        const height = Math.random() * 50 + 5;
+        const duration = Math.random() * 1 + 0.5;
+
+        drop.classList.add("drop");
+        puddle.classList.add("puddle");
+        cloud.appendChild(drop);
+
+        drop.style.left = left + "px";
+        drop.style.width = width + "px";
+        drop.style.height = height + "px";
+        drop.style.animationDuration = duration + "s";
+
+        setTimeout(function () {
+          cloud.removeChild(drop);
+          puddle.style.left = left + "px";
+          ground.appendChild(puddle);
+
+          setTimeout(function () {
+            ground.removeChild(puddle);
+          }, 1000);
+        }, duration * 1000);
+      }
+
+      setInterval(rain, 50);
+    </script>
+  </body>
+</html>

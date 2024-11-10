@@ -1,0 +1,112 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #1b1b1b;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cloud {
+  position: relative;
+  width: 320px;
+  height: 100px;
+  background: #fff;
+  border-radius: 100px;
+  filter: drop-shadow(8px 8px 0 #0005);
+  animation: animateCloud 2s steps(1) infinite;
+}
+
+@keyframes animateCloud {
+  0% {
+    filter: drop-shadow(8px 8px 0 #0001) drop-shadow(0 0 0 #fff) brightness(1);
+  }
+  95% {
+    filter: drop-shadow(8px 8px 0 #0001) drop-shadow(0 0 50px #fff5)
+      brightness(10);
+  }
+}
+
+.cloud::before {
+  content: "";
+  top: -50px;
+  left: 40px;
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: #484f59;
+  box-shadow: 90px -10px 0 30px #484f59;
+}
+
+.cloud::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #484f59;
+  border-radius: 100px;
+}
+
+.drop {
+  position: absolute;
+  top: 0;
+  background: #05a2eb;
+  width: 2px;
+  height: 10px;
+  transform-origin: bottom;
+  animation: animateFall linear;
+}
+
+@keyframes animateFall {
+  0% {
+    transform: translateY(0) scaleY(1);
+  }
+  100% {
+    transform: translateY(360px) scaleY(1);
+  }
+}
+
+.ground {
+  position: absolute;
+  bottom: 0;
+  width: 320px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  box-shadow: 0px 0px 20px 10px rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.puddle {
+  position: absolute;
+  bottom: 0;
+  width: 10px;
+  height: 5px;
+  background: rgba(5, 162, 235, 0.6);
+  border-radius: 50%;
+  animation: expandPuddle 1s linear;
+}
+
+@keyframes expandPuddle {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
